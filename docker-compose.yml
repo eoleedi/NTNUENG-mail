@@ -1,0 +1,34 @@
+services:
+    phpapache:
+      #image: titangene/php-apache-mysql:v1.0
+      build: ./php
+      ports:
+        - "80:80"
+        - "443:443"
+      depends_on:
+        - mysql
+      volumes:
+        - ./www:/var/www/html
+    mysql:
+      build: ./mysql
+      ports:
+        - "3306:3306"
+      command: --default-authentication-plugin=mysql_native_password
+      restart: always
+      volumes:
+        - ./mysql/data:/var/lib/mysql
+        - ./mysql/sql:/docker-entrypoint-initdb.d
+      environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: storage
+        MYSQL_USER: root
+        MYSQL_PASSWORD: root
+    phpmyadmin:
+      image: phpmyadmin/phpmyadmin
+      ports:
+        - "8080:80"
+      depends_on:
+        - mysql
+      environment:
+        PMA_HOST: mysql
+        PMA_PORT: 3306

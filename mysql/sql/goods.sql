@@ -1,3 +1,4 @@
+USE storage;
 CREATE TABLE goods(
     `id` int(8) NOT NULL AUTO_INCREMENT,
     `cdate` date DEFAULT NULL,

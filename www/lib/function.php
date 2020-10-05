@@ -7,7 +7,7 @@ function add_good($cdate, $senderUnit, $receiver, $receiveDate, $receiveTime, $s
 		return false;
 	}
 
-	$dbh = new PDO('mysql:host=localhost;dbname=' . DB_NAME, DB_USER, DB_PASS);
+	$dbh = new PDO('mysql:host=mysql;dbname=' . DB_NAME, DB_USER, DB_PASS);
 	$sql = 'INSERT INTO goods (cdate, senderUnit, receiver, receiveDateTime, signer, mailType, mailNumber, placementDateTime, placementLocation) VALUES(:cdate, :senderUnit, :receiver, :receiveDateTime, :signer, :mailType, :mailNumber, :placementDateTime, :placementLocation)';
 	$stmt = $dbh->prepare($sql);
 
@@ -32,7 +32,7 @@ function add_good($cdate, $senderUnit, $receiver, $receiveDate, $receiveTime, $s
 
 function get_goods($id = '')
 {
-	$dbh = new PDO('mysql:host=localhost;dbname=' . DB_NAME, DB_USER, DB_PASS);
+	$dbh = new PDO('mysql:host=mysql;dbname=' . DB_NAME, DB_USER, DB_PASS);
 	if ($id)
 		$sql = 'SELECT * FROM goods WHERE id = :id';
 	else
@@ -54,7 +54,7 @@ function mod_good($cdate, $senderUnit, $receiver, $receiveDate, $receiveTime, $s
 		return false;
 	}
 
-	$dbh = new PDO('mysql:host=localhost;dbname=' . DB_NAME, DB_USER, DB_PASS);
+	$dbh = new PDO('mysql:host=mysql;dbname=' . DB_NAME, DB_USER, DB_PASS);
 	$sql = 'UPDATE goods SET cdate=:cdate, senderUnit=:senderUnit, receiver=:receiver, receiveDateTime=:receiveDateTime, signer=:signer, mailType=:mailType, mailNumber=:mailNumber, placementDateTime=:placementDateTime, placementLocation=:placementLocation WHERE id =:id ';
 	$stmt = $dbh->prepare($sql);
 
@@ -82,7 +82,7 @@ function del_good($id)
 		return false;
 	}
 
-	$dbh = new PDO('mysql:host=localhost;dbname=' . DB_NAME, DB_USER, DB_PASS);
+	$dbh = new PDO('mysql:host=mysql;dbname=' . DB_NAME, DB_USER, DB_PASS);
 	$sql = 'DELETE FROM goods WHERE id = :id';
 	$stmt = $dbh->prepare($sql);
 

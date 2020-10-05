@@ -27,6 +27,7 @@ if ($post) {
 		exit;
 	} else {
 		$error = 'Input failed';
+		
 	}
 }
 else{
