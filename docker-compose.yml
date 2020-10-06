@@ -1,6 +1,7 @@
+version: '2'
+
 services:
     phpapache:
-      #image: titangene/php-apache-mysql:v1.0
       build: ./php
       ports:
         - "80:80"
