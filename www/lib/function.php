@@ -36,7 +36,7 @@ function get_goods($id = '')
 	if ($id)
 		$sql = 'SELECT * FROM goods WHERE id = :id';
 	else
-		$sql = 'SELECT * FROM goods';
+		$sql = 'SELECT * FROM goods ORDER BY receiveDateTime DESC';
 
 	$stmt = $dbh->prepare($sql);
 

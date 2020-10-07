@@ -1,6 +1,6 @@
 <!-- nav bar -->
 <nav class="navbar navbar-light " style="background-color:#44090d">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="./">
         <img src="./src/ntnu_logo.png"height="30" class="d-inline-block align-top" alt="">
         <font color="white">NTNUENG Mail</font>
     </a>
