@@ -1,3 +1,4 @@
+CREATE DATABASE IF NOT EXISTS `storage`; 
 USE storage;
 CREATE TABLE goods(
     `id` int(8) NOT NULL AUTO_INCREMENT,
