@@ -40,12 +40,12 @@ else{
 	$senderUnit   		= $good['senderUnit'];
 	$receiver   		= $good['receiver'];
 	$receiveDate   		= date("Y-m-d", strtotime($good['receiveDateTime']));
-	$receiveTime   		= date("H:i:s", strtotime($good['receiveDateTime']));
+	$receiveTime   		= date("H:i", strtotime($good['receiveDateTime']));
 	$signer   			= $good['signer']; 
 	$mailType   		= $good['mailType']; 
 	$mailNumber 		= $good['mailNumber'];
 	$placementDate  	= date("Y-m-d", strtotime($good['placementDateTime'])); 
-	$placementTime  	= date("H:i:s", strtotime($good['placementDateTime']));
+	$placementTime  	= date("H:i", strtotime($good['placementDateTime']));
 	$placementLocation  = $good['placementLocation'];
 	
 }
