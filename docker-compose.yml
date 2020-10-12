@@ -11,21 +11,22 @@ services:
       volumes:
         - ./www:/var/www/html
     mysql:
-      build: ./mysql
+      image: mariadb
       ports:
         - "3306:3306"
-      command: --default-authentication-plugin=mysql_native_password
       restart: always
+      volumes:
+        - mysql_data:/var/lib/mysql
+        - ./mysql/sql/init.sql:/docker-entrypoint-initdb.d/init.sql
       environment:
         MYSQL_ROOT_PASSWORD: root
         MYSQL_DATABASE: storage
-        MYSQL_USER: root
-        MYSQL_PASSWORD: root
-      volumes:
-        - ./mysql/data:/var/lib/mysql
-        #- ./mysql/sql/init.sql:/docker-entrypoint-initdb.d/init.sql
+        MYSQL_USER: root123
+        MYSQL_PASSWORD: root123
     adminer:
       image: adminer
       restart: always
       ports:
         - 8080:8080
+volumes: 
+  mysql_data:
