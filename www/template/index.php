@@ -30,6 +30,10 @@
 		</form>
 	</div>
 	<br>
+	<div class="d-flex justify-content-center">
+		<button class="btn btn-primary" onclick="location.href='add.php'">增加簽收物品</button>
+	</div>
+	<br>
 	<!-- data -->
 	<div class="mx-auto " style="width: 90%">
 		<?php if (count($goods) != 0){ ?>
@@ -79,19 +83,14 @@
 									</svg>
 								</a>
 							</td>
-					
-
 						</tr>
 					<?php } ?>
 				</tbody>
 			</table>
-			
-			<br>
 		</div>
+		<br>
 		<?php }?>
-		<div class="d-flex justify-content-center">
-				<button class="btn btn-primary" onclick="location.href='add.php'">增加簽收物品</button>
-		</div>
+		
 	</div>
 	
 </body>
