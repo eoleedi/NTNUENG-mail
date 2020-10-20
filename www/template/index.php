@@ -84,7 +84,7 @@
 				</tbody>
 			</table>
 			<div class="d-flex justify-content-center">
-				<button class="btn btn-primary" onclick="location.href='add.php'">Add News</button>
+				<button class="btn btn-primary" onclick="location.href='add.php'">增加簽收物品</button>
 			</div>
 			<br>
 		</div>
