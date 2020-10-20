@@ -12,9 +12,9 @@
 	
 	<br><br><br>
 	<!-- search box -->
-	<div class="mx-auto" style="width: 350px;">
-		<form class="form-inline">
-			<div class="input-group" style="border-radius: 20px">
+	<div class="mx-auto d-flex justify-content-center" style="width: 350px;">
+		<form class="form-inline ">
+			<div class="input-group " style="border-radius: 20px">
 				<div class="input-group-prepend ">
 					<span class="input-group-text">
 						<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -32,6 +32,7 @@
 	<br>
 	<!-- data -->
 	<div class="mx-auto " style="width: 90%">
+		<?php if (count($goods) != 0){ ?>
 		<div style="border-width:2px; border-style:solid; border-color:#EEEEEE; box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.3);">
 			<table class="table table-striped">
 				<thead class="thead-dark">
@@ -48,6 +49,7 @@
 						<th scope="col"></th>
 					</tr>
 				</thead>
+				
 				<tbody>
 					<?php foreach ($goods as $d) { ?>
 						<tr>
@@ -83,10 +85,12 @@
 					<?php } ?>
 				</tbody>
 			</table>
-			<div class="d-flex justify-content-center">
-				<button class="btn btn-primary" onclick="location.href='add.php'">增加簽收物品</button>
-			</div>
+			
 			<br>
+		</div>
+		<?php }?>
+		<div class="d-flex justify-content-center">
+				<button class="btn btn-primary" onclick="location.href='add.php'">增加簽收物品</button>
 		</div>
 	</div>
 	
