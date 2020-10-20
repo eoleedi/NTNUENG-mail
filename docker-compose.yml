@@ -23,6 +23,7 @@ services:
         MYSQL_DATABASE: storage
         MYSQL_USER: root123
         MYSQL_PASSWORD: root123
+        TZ: Asia/Taipei
     adminer:
       image: adminer
       restart: always

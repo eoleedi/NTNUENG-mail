@@ -8,9 +8,7 @@
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li class="nav-item active">
             <a class="nav-link" href="./add.php">
-            <button class="btn btn-dark">
                 <font color="white">新增</font>
-            </button>
             </a>
         </li>
     </ul>

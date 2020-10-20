@@ -23,7 +23,7 @@
 						</svg>
 					</span>		
 				</div>
-				<input class="form-control mr-sm-2" name="q" type="search" placeholder="Search" aria-label="Search">
+				<input class="form-control mr-sm-2" name="query" type="search" placeholder="Search" aria-label="Search">
 				
 			</div>
 			<!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->

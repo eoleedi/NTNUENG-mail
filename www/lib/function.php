@@ -30,11 +30,19 @@ function add_good($cdate, $senderUnit, $receiver, $receiveDate, $receiveTime, $s
 	return true;
 }
 
-function get_goods($id = '')
+function get_goods($id = '', $query='')
 {
+	/* SQL note
+		offset n row 			跳過n行
+		fetch next n rows only  取得n行 
+	*/ // wait for update 分頁功能
+	
+	$query = '%'.$query.'%';
 	$dbh = new PDO('mysql:host=mysql;dbname=' . DB_NAME, DB_USER, DB_PASS);
 	if ($id)
 		$sql = 'SELECT * FROM goods WHERE id = :id';
+	else if ($query)
+		$sql = 'SELECT * FROM goods WHERE receiver LIKE :query OR senderUnit LIKE :query OR signer LIKE :query';
 	else
 		$sql = 'SELECT * FROM goods ORDER BY receiveDateTime DESC';
 
@@ -42,6 +50,8 @@ function get_goods($id = '')
 
 	if ($id)
 		$stmt->execute(['id' => $id]);
+	else if ($query)
+		$stmt->execute(['query' => $query]);
 	else
 		$stmt->execute();
 
