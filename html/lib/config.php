@@ -1,6 +1,6 @@
 <?php
-define('DB_USER', 'root123');
-define('DB_PASS', 'root123');
-define('DB_NAME', 'storage');
+define('DB_USER', $_ENV['MYSQL_USER']);
+define('DB_PASS', $_ENV['MYSQL_PASSWORD']);
+define('DB_NAME', $_ENV['MYSQL_DATABASE']);
 date_default_timezone_set('Asia/Shanghai');
 ?>

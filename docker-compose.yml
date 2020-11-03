@@ -10,8 +10,13 @@ services:
         - mysql
       volumes:
         - ./html:/var/www/html
-        - ../certbot/letsencrypt:/etc/letsencrypt
+        - /etc/letsencrypt:/etc/letsencrypt
         - ./php/default.conf:/etc/apache2/sites-available/000-default.conf
+      environment:
+        MYSQL_DATABASE: ${MYSQL_DATABASE}
+        MYSQL_USER: ${MYSQL_USER}
+        MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+        
     mysql:
       image: mariadb
       ports:
@@ -21,14 +26,16 @@ services:
         - mysql_data:/var/lib/mysql
         - ./mysql/sql/init.sql:/docker-entrypoint-initdb.d/init.sql
       environment:
-        MYSQL_ROOT_PASSWORD: root
-        MYSQL_DATABASE: storage
-        MYSQL_USER: root123
-        MYSQL_PASSWORD: root123
+        MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+        MYSQL_DATABASE: ${MYSQL_DATABASE}
+        MYSQL_USER: ${MYSQL_USER}
+        MYSQL_PASSWORD: ${MYSQL_PASSWORD}
         TZ: Asia/Taipei
     adminer:
-      image: adminer
+      image: adminer:4.2.5-standalone
       restart: always
+      depends_on:
+        - mysql
       ports:
         - 8080:8080
 volumes: 
