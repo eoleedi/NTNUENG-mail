@@ -9,7 +9,9 @@ services:
       depends_on:
         - mysql
       volumes:
-        - ./www:/var/www/html
+        - ./html:/var/www/html
+        - ../certbot/letsencrypt:/etc/letsencrypt
+        - ./php/default.conf:/etc/apache2/sites-available/000-default.conf
     mysql:
       image: mariadb
       ports:
