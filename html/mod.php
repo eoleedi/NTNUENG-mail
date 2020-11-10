@@ -28,12 +28,11 @@ if ($post) {
 		exit;
 	} else {
 		$error = 'Input failed';
-		echo "mailType:", $mailType, ", mailNumber:", $mailNumber;
 	}
 }
 else{
 	$senderUnit = "收發室";
-	$good = get_goods($_GET['id'])[0];
+	$good = get_goods($_GET['id'],'','')[0];
 	
 	$id 				= $_GET['id'];
 	$cdate   			= $good['cdate'];

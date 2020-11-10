@@ -30,31 +30,41 @@ function add_good($cdate, $senderUnit, $receiver, $receiveDate, $receiveTime, $s
 	return true;
 }
 
-function get_goods($id = '', $query='')
+function get_goods($id, $query, $dataStart)
 {
 	/* SQL note
 		offset n row 			跳過n行
 		fetch next n rows only  取得n行 
 	*/ // wait for update 分頁功能
 	
-	$query = '%'.$query.'%';
+	$dataStart = (int)$dataStart;
+
 	$dbh = new PDO('mysql:host=mysql;dbname=' . DB_NAME, DB_USER, DB_PASS);
+	
 	if ($id)
-		$sql = 'SELECT * FROM goods WHERE id = :id';
-	else if ($query)
-		$sql = 'SELECT * FROM goods WHERE receiver LIKE :query OR senderUnit LIKE :query OR signer LIKE :query';
+		$sql = "SELECT * FROM goods  WHERE id = :id";
+	else if ($query){
+		$query = '%'.$query.'%';
+		$sql = "SELECT * FROM goods WHERE receiver LIKE :query OR senderUnit LIKE :query OR signer LIKE :query LIMIT :dataStart,10";
+	}
 	else
-		$sql = 'SELECT * FROM goods ORDER BY receiveDateTime DESC';
+		$sql = "SELECT * FROM goods ORDER BY receiveDateTime DESC LIMIT :dataStart, 10";
 
 	$stmt = $dbh->prepare($sql);
-
+	
 	if ($id)
 		$stmt->execute(['id' => $id]);
-	else if ($query)
-		$stmt->execute(['query' => $query]);
-	else
+	else if ($query){
+		$stmt->bindValue(':dataStart', $dataStart, PDO::PARAM_INT);
+		$stmt->bindValue(':query', $query, PDO::PARAM_STR);
 		$stmt->execute();
+	}
+	else{
+		$stmt->bindValue(':dataStart', $dataStart, PDO::PARAM_INT);
+		$stmt->execute();
+	}
 
+	
 	return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 

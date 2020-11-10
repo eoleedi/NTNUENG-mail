@@ -2,7 +2,7 @@
 <html lang="zh-TW">
 <head>
 	<meta charset="utf-8">
-	<title>Mod News</title>
+	<title>Mod Goods</title>
 	
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap-clockpicker.min.css">
@@ -33,15 +33,10 @@
 </head>
 <body onload="onload()">
 	<div>
-		<?php
-		if ($error) {
-			echo '<h1>' . $error . '</h1>';
-			echo $cdate, $senderUnit, $receiver, $receiveDate, $receiveTime, $signer, $mailType, $mailNumber, $placementDate, $placementTime, $placementLocation;
-		}
-		?>
+		
 	</div>
 	<?php include("nav.php"); ?> 
-
+	
 	<form method="post">
 		<div class="mx-auto " style="width: 80%; padding: 20px;">
 			<h3>修改簽收物品</h3>
@@ -141,6 +136,14 @@
 						</tr>
 					</tbody>
 				</table>
+				<div class="d-flex justify-content-center" name="errorMsgBox">
+					<?php
+						if ($error) {
+							echo $error;
+							#echo $cdate, $senderUnit, $receiver, $receiveDate, $receiveTime, $signer, $mailType, $mailNumber, $placementDate, $placementTime, $placementLocation;
+						}
+					?>
+				</div>
 				<div class="d-flex justify-content-center">
 					<input type="hidden" name="id" value="<?php echo htmlspecialchars($id); ?>">
 					<button class="btn btn-primary" name="post" value="submit" type="submit" >修改簽收物品</button>
