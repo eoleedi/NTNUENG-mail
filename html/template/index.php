@@ -72,6 +72,7 @@
 		</div>
 		<br>
 		<div class="d-flex justify-content-center">
+			<a href= <?php echo ("./?dataStart=" .($dataStart - 10)."&query=".$query );?> >上一頁</a>&nbsp
 			<a href= <?php echo ("./?dataStart=" .($dataStart + 10)."&query=".$query );?> >下一頁</a>
 		</div>
 		<?php } else{ ?>
