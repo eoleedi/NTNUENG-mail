@@ -1,5 +1,5 @@
 <!-- nav bar -->
-<nav class="navbar navbar-light " style="background-color:#44090d">
+<nav class="navbar navbar-light sticky-top navbar-expand-lg" style="background-color:#44090d">
 
     <a class="navbar-brand" href="./">
         <img src="./src/ntnu_logo_2.png" height="50" class="d-inline-block align-middle" alt="">
