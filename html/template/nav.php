@@ -2,8 +2,7 @@
 <nav class="navbar navbar-light " style="background-color:#44090d">
 
     <a class="navbar-brand" href="./">
-        <img src="./src/ntnu_logo.png" height="50" class="d-inline-block align-middle" alt="">
-        <font color="white" >英語系郵務登記平台</font>
+        <img src="./src/ntnu_logo_2.png" height="50" class="d-inline-block align-middle" alt="">
     </a>
 
     
