@@ -24,10 +24,7 @@ function add_good($cdate, $senderUnit, $receiver, $receiveDate, $receiveTime, $s
 	$stmt->bindParam(':placementDateTime', $placementDateTime, PDO::PARAM_STR);
 	$stmt->bindParam(':placementLocation', $placementLocation, PDO::PARAM_STR);
 
-	
 	return $stmt->execute();
-	print_r($stmt->errorInfo());
-	return true;
 }
 
 function get_goods($id, $query, $dataStart)
