@@ -23,4 +23,4 @@ CREATE TABLE users(
 	`userName` varchar(255),
 	`hashedPassword` char(60),
 	PRIMARY KEY (`id`)
-) ENGINE=InnoDN DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
