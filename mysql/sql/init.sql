@@ -16,11 +16,11 @@ CREATE TABLE goods(
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-CREATE DATABASE IF NOT EXISTS `userData`;
-USE userData;
-CREATE TABLE users(
-	`id` int(8) NOT NULL AUTO_INCREMENT,
-	`userName` varchar(255),
-	`hashedPassword` char(60),
-	PRIMARY KEY (`id`)
+
+CREATE TABLE userdata(
+	`id` int(8) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
