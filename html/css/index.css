@@ -8,3 +8,14 @@ body {
   width: auto;
 }
 
+.storage-box{
+  border-width:2px;
+  border-style:solid;
+  border-color:#EEEEEE;
+  box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.3);
+}
+
+.center-content{
+  padding: 1em;
+  text-align:center
+}

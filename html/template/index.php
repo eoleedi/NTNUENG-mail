@@ -3,42 +3,45 @@
 	<head>
 		<title>師大英語系郵物登記平台</title>
 		<meta charset="UTF-8">
+		<meta name="viewport", content="width = device-width, initial-scale = 1.0">
 		<link rel="icon" href="/src/favicon.png">
+
+		<!-- CSS reference-->
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 		<link rel="stylesheet" href="./css/index.css">
 	</head>
-<body>	
-	
+<body>
+	<!-- Navbar -->
 	<?php include("nav.php"); ?>
-	
-	<br>
-	<br>
-	<div class="d-flex justify-content-center">
-		<button class="btn btn-primary" onclick="location.href='add.php'">增加簽收物品</button>
-	</div>
-	<br>
-	<!-- data -->
-	<div class="mx-auto " style="width: 95%">
-		<?php if (count($goods) != 0){ ?>
-		<div style="border-width:2px; border-style:solid; border-color:#EEEEEE; box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.3);">
-			<table class="table table-striped">
-				<thead class="thead-dark">
-					<tr>
-						<th scope="col">日期</th>
-						<th scope="col">送貨單位/師大收發室</th>
-						<th scope="col">收件人</th>
-						<th scope="col">簽收日期/時間</th>
-						<th scope="col">簽收人&nbsp</th>
-						<th scope="col">郵件類別</th>
-						<th scope="col">放置日期/時間</th>
-						<th scope="col">放置地點</th>
-						<th scope="col"></th>
-						<th scope="col"></th>
-					</tr>
-				</thead>
-				
-				<tbody>
-					<?php foreach ($goods as $d) { ?>
+
+	<!-- Content -->
+	<div class="container">
+		<!-- Add storage button -->
+		<div class="center-content">
+			<button class="btn btn-primary" onclick="location.href='add.php'">增加簽收物品</button>
+		</div>
+
+		<!-- Storage data -->
+		<div class="mx-auto">
+			<?php if (count($goods) != 0){ ?>
+			<div class="storage-box">
+				<table class="table table-striped table-responsive">
+					<thead class="thead-dark">
+						<tr>
+							<th scope="col">日期</th>
+							<th scope="col">送貨單位/師大收發室</th>
+							<th scope="col">收件人</th>
+							<th scope="col">簽收日期/時間</th>
+							<th scope="col">簽收人&nbsp</th>
+							<th scope="col">郵件類別</th>
+							<th scope="col">放置日期/時間</th>
+							<th scope="col">放置地點</th>
+							<th scope="col"></th>
+							<th scope="col"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php foreach ($goods as $d) { ?>
 						<tr>
 							<td><?php echo htmlspecialchars($d['cdate']); ?></td>
 							<td><?php echo htmlspecialchars($d['senderUnit']); ?></td>
@@ -48,8 +51,8 @@
 							<td><?php echo htmlspecialchars($d['mailType']); ?></textarea><br><?php echo htmlspecialchars($d['mailNumber']); ?></td>
 							<td><?php echo htmlspecialchars( date("Y-m-d H:i", strtotime($d['placementDateTime'])) ); ?></td>
 							<td><?php echo htmlspecialchars($d['placementLocation']); ?></td>
-
 							<td>
+								<!-- Modify icon-->
 								<a href="mod.php?id=<?php echo htmlspecialchars($d['id']); ?>">
 									<svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 										<path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
@@ -58,6 +61,7 @@
 								</a>
 							</td>
 							<td>
+								<!-- Delete icon -->
 								<a href="del.php?id=<?php echo htmlspecialchars($d['id']); ?>" onclick="return confirm('Delete This?')">
 									<svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 										<path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
@@ -66,26 +70,25 @@
 								</a>
 							</td>
 						</tr>
-					<?php } ?>
-				</tbody>
-			</table>
-		</div>
-		<br>
-		<div class="d-flex justify-content-center">
-			<a href= <?php echo ("./?dataStart=" . ($dataStart > 0 ? ($dataStart - 10) : 0) ."&query=".$query );?> >上一頁</a>&nbsp
-			<a href= <?php echo ("./?dataStart=" .($dataStart + 10)."&query=".$query );?> >下一頁</a>
-		</div>
-		<?php } else{ ?>
+						<?php } ?>
+					</tbody>
+				</table>
+			</div>
+			<br>
+			<div class="d-flex justify-content-center">
+				<a href= <?php echo ("./?dataStart=" . ($dataStart > 0 ? ($dataStart - 10) : 0) ."&query=".$query );?> >上一頁</a>&nbsp
+				<a href= <?php echo ("./?dataStart=" .($dataStart + 10)."&query=".$query );?> >下一頁</a>
+			</div>
+
+			<?php } else{ ?>
 			<div class="d-flex justify-content-center">
 				<text>已經沒有資料了喔</text>
 			</div>
 			<div class="d-flex justify-content-center">
 				<a href="./" > (回第一頁) </a>
 			</div>
-		<?php } ?>
-		
-		
+			<?php } ?>
+		</div>
 	</div>
-	
 </body>
 </html>
