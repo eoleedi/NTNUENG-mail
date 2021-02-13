@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-	<meta charset="utf-8">
-	<title>Mod Goods</title>
-	
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<title>修改簽收物品</title>
+	<meta charset="UTF-8">
+
+	<link rel="icon" href="/src/favicon.png">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap-clockpicker.min.css">
 	
 	<script>

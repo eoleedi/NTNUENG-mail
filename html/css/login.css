@@ -1,0 +1,9 @@
+body { 
+    font: 14px sans-serif;
+    width: auto
+}
+
+.wrapper{ 
+    width: 350px; 
+    padding: 20px; 
+}

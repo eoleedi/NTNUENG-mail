@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 	<head>
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">	
-		<title>NTNUENG Mail</title>
+		<title>師大英語系郵物登記平台</title>
+		<meta charset="UTF-8">
+		<link rel="icon" href="/src/favicon.png">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 		<link rel="stylesheet" href="./css/index.css">
 	</head>
 <body>	
@@ -16,7 +18,7 @@
 	</div>
 	<br>
 	<!-- data -->
-	<div class="mx-auto " style="width: 90%">
+	<div class="mx-auto " style="width: 95%">
 		<?php if (count($goods) != 0){ ?>
 		<div style="border-width:2px; border-style:solid; border-color:#EEEEEE; box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.3);">
 			<table class="table table-striped">
@@ -26,7 +28,7 @@
 						<th scope="col">送貨單位/師大收發室</th>
 						<th scope="col">收件人</th>
 						<th scope="col">簽收日期/時間</th>
-						<th scope="col">簽收人</th>
+						<th scope="col">簽收人&nbsp</th>
 						<th scope="col">郵件類別</th>
 						<th scope="col">放置日期/時間</th>
 						<th scope="col">放置地點</th>
@@ -42,9 +44,8 @@
 							<td><?php echo htmlspecialchars($d['senderUnit']); ?></td>
 							<td><?php echo htmlspecialchars($d['receiver']); ?></td>
 							<td><?php echo htmlspecialchars( date("Y-m-d H:i", strtotime($d['receiveDateTime'])) ); ?></td>
-
 							<td><?php echo htmlspecialchars($d['signer']); ?></td>
-							<td><?php echo htmlspecialchars($d['mailType']); ?></textarea><?php echo htmlspecialchars($d['mailNumber']); ?></td>
+							<td><?php echo htmlspecialchars($d['mailType']); ?></textarea><br><?php echo htmlspecialchars($d['mailNumber']); ?></td>
 							<td><?php echo htmlspecialchars( date("Y-m-d H:i", strtotime($d['placementDateTime'])) ); ?></td>
 							<td><?php echo htmlspecialchars($d['placementLocation']); ?></td>
 
@@ -71,7 +72,7 @@
 		</div>
 		<br>
 		<div class="d-flex justify-content-center">
-			<a href= <?php echo ("./?dataStart=" .($dataStart - 10)."&query=".$query );?> >上一頁</a>&nbsp
+			<a href= <?php echo ("./?dataStart=" . ($dataStart > 0 ? ($dataStart - 10) : 0) ."&query=".$query );?> >上一頁</a>&nbsp
 			<a href= <?php echo ("./?dataStart=" .($dataStart + 10)."&query=".$query );?> >下一頁</a>
 		</div>
 		<?php } else{ ?>

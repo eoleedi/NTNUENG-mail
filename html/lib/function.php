@@ -42,7 +42,7 @@ function get_goods($id, $query, $dataStart)
 		$sql = "SELECT * FROM goods  WHERE id = :id";
 	else if ($query){
 		$query = '%'.$query.'%';
-		$sql = "SELECT * FROM goods WHERE receiver LIKE :query OR senderUnit LIKE :query OR signer LIKE :query LIMIT :dataStart,10";
+		$sql = "SELECT * FROM goods WHERE receiver LIKE :query OR senderUnit LIKE :query OR signer LIKE :query OR mailNumber LIKE :query LIMIT :dataStart,10";
 	}
 	else
 		$sql = "SELECT * FROM goods ORDER BY receiveDateTime DESC LIMIT :dataStart, 10";
@@ -107,81 +107,59 @@ function del_good($id)
 
 	return $stmt->execute();
 }
-function login(){
+function login($username, $password, &$username_err, &$password_err){
 	 
     // Check if the user is already logged in, if yes then redirect him to welcome page
     if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
         header("location: index.php");
         exit;
     }
-    
-    
-    // Define variables and initialize with empty values
-    $username = $password = "";
-    $username_err = $password_err = "";
-    
-    // Processing form data when form is submitted
-    if($_SERVER["REQUEST_METHOD"] == "POST"){
-    
-        // Check if username is empty
-        if(empty(trim($_POST["username"]))){
-            $username_err = "Please enter username.";
-        } else{
-            $username = trim($_POST["username"]);
-        }
         
-        // Check if password is empty
-        if(empty(trim($_POST["password"]))){
-            $password_err = "Please enter your password.";
-        } else{
-            $password = trim($_POST["password"]);
-        }
-        
-        // Validate credentials
-        if(empty($username_err) && empty($password_err)){
-			// Prepare a select statement
-			$dbh = new PDO('mysql:host=mysql;dbname=' . DB_NAME, DB_USER, DB_PASS);
-			$sql = "SELECT id, username, password FROM userdata WHERE username = :username";
-			$stmt = $dbh->prepare($sql);
-            
-            if($stmt){
-				// Bind variables to the prepared statement as parameters
-				$stmt->bindParam(':username', $username, PDO::PARAM_STR);
-                
-				$stmt->execute();
-				
-				if($stmt->execute()){
-					$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-					if($result->fetchColumn() == 1){
-						mysqli_stmt_bind_result($stmt, $id, $username, $hashed_password);
-                        if(mysqli_stmt_fetch($stmt)){
-                            if(password_verify($password, $hashed_password)){
-                                // Password is correct, so start a new session
-                                session_start();
-                                
-                                // Store data in session variables
-                                $_SESSION["loggedin"] = true;
-                                $_SESSION["id"] = $id;
-                                $_SESSION["username"] = $username;                            
-                                
-                                // Redirect user to welcome page
-                                header("location: index.php");
-                            } else{
-                                // Display an error message if password is not valid
-                                $password_err = "The password you entered was not valid.";
-                            }
-						}
+	// Validate credentials
+	if(empty($username_err) && empty($password_err)){
+		// Prepare a select statement
+		$dbh = new PDO('mysql:host=mysql;dbname=' . DB_NAME, DB_USER, DB_PASS);
+		$sql = "SELECT id, username, hashed_password FROM userdata WHERE username = :username";
+		$stmt = $dbh->prepare($sql);
+		
+		if($stmt){
+			// Bind variables to the prepared statement as parameters
+			$stmt->bindParam(':username', $username, PDO::PARAM_STR);
+			if($stmt->execute()){
+				//$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+				if($stmt->rowCount() == 1){
+					$stmt->bindColumn('id', $id);
+					$stmt->bindColumn('username', $username);
+					$stmt->bindColumn('hashed_password', $correct_hashed_password);
+					$stmt->fetch(PDO::FETCH_ASSOC);
+
+					
+					if(password_verify($password, $correct_hashed_password)){
+						// Password is correct, so start a new session
+						session_start();
 						
+						// Store data in session variables
+						$_SESSION["loggedin"] = true;
+						$_SESSION["id"] = $id;
+						$_SESSION["username"] = $username;                            
+						
+						// Redirect user to welcome page
+						header("location: index.php");
+					} else{
+						// Display an error message if password is not valid
+						$password_err = "The password you entered was not valid.";
 					}
-					else{
-                        // Display an error message if username doesn't exist
-                        $username_err = "No account found with that username.";
-                    }
+					
+					
 				}
 				else{
-                    echo "Oops! Something went wrong. Please try again later.";
-                }
-            }
-        }
-    }
+					// Display an error message if username doesn't exist
+					$username_err = "No account found with that username.";
+				}
+			}
+			else{
+				echo "Oops! Something went wrong. Please try again later.";
+			}
+		}
+	}
 }
