@@ -1,6 +1,11 @@
 <?php
 include('lib/function.php');
 
+session_start();
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] === false  ){
+    header("Location:login.php");
+}
+
 $post = isset($_POST['post']) ? $_POST['post'] : false;
 $error = false;
 
