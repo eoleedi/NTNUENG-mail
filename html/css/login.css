@@ -68,3 +68,7 @@ body {
 .form-group input[type = "submit"]:hover{
     background: rgba(247,249,75,0.9);
 }
+
+.help-block{
+    color: white;
+}
