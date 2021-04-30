@@ -13,7 +13,7 @@
     
     <div class="form-box">
         <form class="box" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <h1>Login</h1>
+            <h1>登入英語系郵務系統</h1>
             <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
                 <input type="text" name="username" placeholder="account" value="<?php echo $username; ?>">
                 <span class="help-block"><?php echo $username_err; ?></span>
