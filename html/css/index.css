@@ -20,6 +20,9 @@ body {
 .page-nav, .page-nav:hover{
   color: rgb(68, 9, 13);
 }
+th{
+  vertical-align: middle !important; 
+}
 
 .storage-box{
   border-width:2px;
@@ -37,8 +40,18 @@ body {
 .container-fluid{
   margin-top: 1em;
 }
+.mx-auto{
+  margin-left: 100px;
+  margin-right: 100px;
+}
 
 .thead-color{
   background-color: rgba(80,9,15,0.7);
   color: white;
+}
+
+.vertical-center{
+  position: relative;
+  top:50%;
+  transform:translateY(-50%);
 }

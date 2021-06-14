@@ -6,6 +6,19 @@ body {
     background-color:#B69C9D;
 }
 
+.btn{
+	background-color: #B69C9D;
+	color: rgb(68, 9, 13);
+    border-color: rgb(68, 9, 13);
+	border-radius: 10px;
+}
+.btn:hover{
+	background-color:rgb(68, 9, 13);
+	color: #B69C9D;
+	border-color: #B69C9D;
+	border-radius: 10px;
+}
+
 .form-box{
     padding: auto;
     padding-top: 10%;
@@ -72,3 +85,9 @@ body {
 .help-block{
     color: white;
 }
+
+.vertical-center{
+    position: relative;
+    top:50%;
+    transform:translateY(-50%);
+  }

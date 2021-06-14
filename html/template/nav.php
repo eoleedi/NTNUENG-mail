@@ -1,17 +1,4 @@
 <!-- nav bar -->
-<style>
-.btn{
-	background-color: #B69C9D;
-	color: rgb(68, 9, 13);
-	border-radius: 10px;
-}
-.btn:hover{
-	background-color:rgb(68, 9, 13);
-	color: #B69C9D;
-	border-color: #B69C9D;
-	border-radius: 10px;
-}
-</style>
 <nav class="navbar navbar-inverse navbar-light sticky-top navbar-expand-lg" style="background-color:#44090d">
 	<div class="container-fluid">
 		<div class="navbar-header">
@@ -48,11 +35,11 @@
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
 		<?php if($_SESSION['loggedin']){ ?>
-			<li><label><font color="white"><?php echo htmlspecialchars($_SESSION['username']); ?>&nbsp</font></label></li>
-			<li><a href='logout.php'><font color='white'>登出</font></a></li>
+			<li><p class="vertical-center" style="color: white;"><?php echo htmlspecialchars($_SESSION['username']); ?>&nbsp</p></li>
+			<li><button class="btn" onclick="location.href='logout.php'">登出</button></li>
 		<?php } else{?>
 			<!--<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>-->
-			<li><a href="login.php"><font color='white'>登入</font></a></li>
+			<!--<li><button class="btn" onclick="location.href='login.php'">登入</button></li>-->
 		<?php } ?>
 		</ul>
 	</div>

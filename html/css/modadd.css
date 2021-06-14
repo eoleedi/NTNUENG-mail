@@ -30,3 +30,9 @@ body {
     padding-bottom: 0px !important;
     padding-right: 0px !important;
 }
+
+.vertical-center{
+    position: relative;
+    top:50%;
+    transform:translateY(-50%);
+  }

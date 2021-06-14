@@ -25,7 +25,7 @@
 					<thead>
 						<tr class="thead-color">
 							<th scope="col">日期</th>
-							<th scope="col">送貨單位/師大收發室</th>
+							<th scope="col">送貨單位/<br>師大收發室</th>
 							<th scope="col">收件人</th>
 							<th scope="col">簽收日期/時間</th>
 							<th scope="col">簽收人&nbsp</th>
@@ -76,7 +76,7 @@
 				<a class="page-nav" href= <?php echo ("./?dataStart=" .($dataStart + 10)."&query=".$query );?> >下一頁</a>
 			</div>
 			<div class="d-flex justify-content-center">
-				<a class="page-nav" href= <?php echo ("./?dataStart=0&query=".$query );?> >回第一頁</a>&nbsp
+				<a class="page-nav" href= <?php echo ("./?dataStart=0&query=".$query );?> >回首頁</a>&nbsp
 			</div>
 			<?php } else{ ?>
 			<div class="d-flex justify-content-center">
