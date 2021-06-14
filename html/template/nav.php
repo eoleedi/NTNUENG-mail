@@ -24,6 +24,12 @@
 					</div>
 				</form>
 			</li>
+			<li class="nav-item">
+				<!-- Add storage button -->
+				<div>
+					<button class="btn btn-primary" onclick="location.href='add.php'">增加簽收物品</button>
+				</div>
+			</li>
 			<?php } ?>
 
 		</ul>

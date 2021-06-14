@@ -8,15 +8,23 @@ body {
   width: auto;
   background-color:#B69C9D;
 }
+.page-nav, .page-nav:hover{
+  color: rgb(68, 9, 13);
+}
 
 .storage-box{
   border-width:2px;
   border-style:solid;
-  border-color:#EEEEEE;
+  border-color: #EEEEEE;
+  background-color: white;
   box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.3);
 }
 
 .center-content{
   padding: 1em;
   text-align:center
+}
+
+.container-fluid{
+  margin-top: 1em;
 }
