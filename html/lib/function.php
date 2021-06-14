@@ -42,7 +42,7 @@ function get_goods($id, $query, $dataStart)
 		$sql = "SELECT * FROM goods  WHERE id = :id";
 	else if ($query){
 		$query = '%'.$query.'%';
-		$sql = "SELECT * FROM goods WHERE receiver LIKE :query OR senderUnit LIKE :query OR signer LIKE :query OR mailNumber LIKE :query LIMIT :dataStart,10";
+		$sql = "SELECT * FROM goods WHERE receiver LIKE :query OR senderUnit LIKE :query OR signer LIKE :query OR mailNumber LIKE :query ORDER BY receiveDateTime DESC LIMIT :dataStart,10";
 	}
 	else
 		$sql = "SELECT * FROM goods ORDER BY receiveDateTime DESC LIMIT :dataStart, 10";
