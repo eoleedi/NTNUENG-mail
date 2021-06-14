@@ -1,0 +1,38 @@
+body {
+    font-family: 'Noto Sans TC', sans-serif;
+    width: auto;
+    background-color:#B69C9D;
+}
+
+.btn{
+	background-color: #B69C9D;
+	color: rgb(68, 9, 13);
+    border-color: rgb(68, 9, 13);
+	border-radius: 10px;
+}
+.btn:hover{
+	background-color:rgb(68, 9, 13);
+	color: #B69C9D;
+	border-color: #B69C9D;
+	border-radius: 10px;
+}
+
+.storage-box{
+    border-width:2px;
+    border-style:solid;
+    border-color:#EEEEEE;
+    background-color: white;
+    box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.3);
+}
+.no-padding{
+    padding-left: 0px !important;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    padding-right: 0px !important;
+}
+
+.vertical-center{
+    position: relative;
+    top:50%;
+    transform:translateY(-50%);
+  }

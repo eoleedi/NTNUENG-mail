@@ -15,21 +15,17 @@
 	<?php include("nav.php"); ?>
 
 	<!-- Content -->
-	<div class="container">
-		<!-- Add storage button -->
-		<div class="center-content">
-			<button class="btn btn-primary" onclick="location.href='add.php'">增加簽收物品</button>
-		</div>
+	<div class="container-fluid">
 
 		<!-- Storage data -->
 		<div class="mx-auto">
 			<?php if (count($goods) != 0){ ?>
 			<div class="storage-box">
-				<table class="table table-striped table-responsive">
-					<thead class="thead-dark">
-						<tr>
+				<table class="table table-striped table-responsive-xl">
+					<thead>
+						<tr class="thead-color">
 							<th scope="col">日期</th>
-							<th scope="col">送貨單位/師大收發室</th>
+							<th scope="col">送貨單位/<br>師大收發室</th>
 							<th scope="col">收件人</th>
 							<th scope="col">簽收日期/時間</th>
 							<th scope="col">簽收人&nbsp</th>
@@ -76,10 +72,12 @@
 			</div>
 			<br>
 			<div class="d-flex justify-content-center">
-				<a href= <?php echo ("./?dataStart=" . ($dataStart > 0 ? ($dataStart - 10) : 0) ."&query=".$query );?> >上一頁</a>&nbsp
-				<a href= <?php echo ("./?dataStart=" .($dataStart + 10)."&query=".$query );?> >下一頁</a>
+				<a class="page-nav" href= <?php echo ("./?dataStart=" . ($dataStart > 0 ? ($dataStart - 10) : 0) ."&query=".$query );?> >上一頁</a>&nbsp
+				<a class="page-nav" href= <?php echo ("./?dataStart=" .($dataStart + 10)."&query=".$query );?> >下一頁</a>
 			</div>
-
+			<div class="d-flex justify-content-center">
+				<a class="page-nav" href= <?php echo ("./?dataStart=0&query=".$query );?> >回首頁</a>&nbsp
+			</div>
 			<?php } else{ ?>
 			<div class="d-flex justify-content-center">
 				<text>已經沒有資料了喔</text>

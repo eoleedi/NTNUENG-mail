@@ -24,16 +24,22 @@
 					</div>
 				</form>
 			</li>
+			<li class="nav-item">
+				<!-- Add storage button -->
+				<div>
+					<button class="btn" onclick="location.href='add.php'">增加簽收物品</button>
+				</div>
+			</li>
 			<?php } ?>
 
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
 		<?php if($_SESSION['loggedin']){ ?>
-			<li><label><font color="white"><?php echo htmlspecialchars($_SESSION['username']); ?>&nbsp</font></label></li>
-			<li><a href='logout.php'><font color='white'>登出</font></a></li>
+			<li><p class="vertical-center" style="color: white;"><?php echo htmlspecialchars($_SESSION['username']); ?>&nbsp</p></li>
+			<li><button class="btn" onclick="location.href='logout.php'">登出</button></li>
 		<?php } else{?>
 			<!--<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>-->
-			<li><a href="login.php"><font color='white'>登入</font></a></li>
+			<!--<li><button class="btn" onclick="location.href='login.php'">登入</button></li>-->
 		<?php } ?>
 		</ul>
 	</div>
