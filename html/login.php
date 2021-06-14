@@ -5,7 +5,8 @@ require_once "lib/config.php";
 session_start();
 $username = isset($_POST["username"]) ? trim($_POST["username"]) : false;
 $password = isset($_POST["password"]) ? trim($_POST["password"]) : false;
-
+$username_err = "";
+$password_err = "";
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
