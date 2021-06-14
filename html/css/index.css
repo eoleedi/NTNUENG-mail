@@ -1,13 +1,22 @@
-.button:hover {
-  background-color: #4CAF50; /* Green */
-  color: white;
-}
-
 body {
   font-family: 'Noto Sans TC', sans-serif;
   width: auto;
   background-color:#B69C9D;
 }
+
+.btn{
+	background-color: #B69C9D;
+	color: rgb(68, 9, 13);
+  border-color: rgb(68, 9, 13);
+	border-radius: 10px;
+}
+.btn:hover{
+	background-color:rgb(68, 9, 13);
+	color: #B69C9D;
+	border-color: #B69C9D;
+	border-radius: 10px;
+}
+
 .page-nav, .page-nav:hover{
   color: rgb(68, 9, 13);
 }
@@ -27,4 +36,9 @@ body {
 
 .container-fluid{
   margin-top: 1em;
+}
+
+.thead-color{
+  background-color: rgba(80,9,15,0.7);
+  color: white;
 }

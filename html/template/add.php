@@ -5,8 +5,8 @@
 	<meta charset="utf-8">
 	<meta name="viewport", content="width = device-width, initial-scale = 1.0">
 	<link rel="icon" href="/src/favicon.png">
-	<link rel="stylesheet" href="./css/add.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+	<link rel="stylesheet" href="./css/modadd.css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap-clockpicker.min.css">
 	<script>
 		function changeMailNumberName(){
@@ -26,18 +26,11 @@
 	</script>
 </head>
 <body onLoad="changeMailNumberName()">
-	<div>
-		<?php
-		if ($error) {
-			echo '<h1>' . $error . '</h1>';
-			echo $cdate, $senderUnit, $receiver, $receiveDate, $receiveTime, $signer, $mailType, $mailNumber, $placementDate, $placementTime, $placementLocation;
-		}
-		?>
-	</div>
+	
 	<?php include("nav.php"); ?> 
 	<div class="container" style="padding: 1em;">
 		<form method="post">
-			<div class="mx-auto">
+			<div class="mx-auto" style="width: 80%; padding: 20px;">
 				<h3>新增簽收物品</h3>
 				<div class="storage-box">
 					<table class="table">
@@ -139,8 +132,15 @@
 							</tr>
 						</tbody>
 					</table>
+					<div class="d-flex justify-content-center invalid-feedback" name="errorMsgBox">
+						<?php
+						if ($error) {
+							echo $error;
+						}
+						?>
+					</div>
 					<div class="d-flex justify-content-center">
-						<button class="btn btn-primary" name="post" value="submit" type="submit" >增加簽收物品</button>
+						<button class="btn" name="post" value="submit" type="submit" >增加簽收物品</button>
 					</div>
 					<br>
 				</div>

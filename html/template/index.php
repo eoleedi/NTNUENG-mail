@@ -22,8 +22,8 @@
 			<?php if (count($goods) != 0){ ?>
 			<div class="storage-box">
 				<table class="table table-striped table-responsive-xl">
-					<thead class="thead-dark">
-						<tr>
+					<thead>
+						<tr class="thead-color">
 							<th scope="col">日期</th>
 							<th scope="col">送貨單位/師大收發室</th>
 							<th scope="col">收件人</th>

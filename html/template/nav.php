@@ -1,4 +1,17 @@
 <!-- nav bar -->
+<style>
+.btn{
+	background-color: #B69C9D;
+	color: rgb(68, 9, 13);
+	border-radius: 10px;
+}
+.btn:hover{
+	background-color:rgb(68, 9, 13);
+	color: #B69C9D;
+	border-color: #B69C9D;
+	border-radius: 10px;
+}
+</style>
 <nav class="navbar navbar-inverse navbar-light sticky-top navbar-expand-lg" style="background-color:#44090d">
 	<div class="container-fluid">
 		<div class="navbar-header">
@@ -27,7 +40,7 @@
 			<li class="nav-item">
 				<!-- Add storage button -->
 				<div>
-					<button class="btn btn-primary" onclick="location.href='add.php'">增加簽收物品</button>
+					<button class="btn" onclick="location.href='add.php'">增加簽收物品</button>
 				</div>
 			</li>
 			<?php } ?>
