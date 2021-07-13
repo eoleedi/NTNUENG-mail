@@ -19,8 +19,10 @@ CREATE TABLE goods(
 
 CREATE TABLE userdata(
 	`id` int(8) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    username VARCHAR(50) NOT NULL UNIQUE,
-    password VARCHAR(255) NOT NULL,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    `username` VARCHAR(50) NOT NULL UNIQUE,
+    `hashed_password` VARCHAR(255) NOT NULL,
+    `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+INSERT INTO userdata (`username`, `hashed_password`)
+VALUES ("root", "$2b$12$vnzEapOvbvs3q4G3OW2SWOI8dPQNDHcnIghI/ffo1SvhF4by6eFma")

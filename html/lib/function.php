@@ -158,6 +158,7 @@ function login($username, $password, &$username_err, &$password_err){
 				}
 			}
 			else{
+				echo json_encode($stmt->errorInfo());
 				echo "Oops! Something went wrong. Please try again later.";
 			}
 		}

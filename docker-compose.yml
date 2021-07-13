@@ -32,5 +32,12 @@ services:
         MYSQL_USER: ${MYSQL_USER}
         MYSQL_PASSWORD: ${MYSQL_PASSWORD}
         TZ: Asia/Taipei
+    adminer:
+      image: adminer:4.2.5-standalone
+      restart: always
+      depends_on:
+        - mysql
+      ports:
+        - 8080:8080
 volumes: 
   mysql_data:

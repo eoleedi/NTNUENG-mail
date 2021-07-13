@@ -34,7 +34,7 @@
 
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
-		<?php if($_SESSION['loggedin']){ ?>
+		<?php if( isset($_SESSION['loggedin']) && $_SESSION['loggedin']){ ?>
 			<li><p class="vertical-center" style="color: white;"><?php echo htmlspecialchars($_SESSION['username']); ?>&nbsp</p></li>
 			<li><button class="btn" onclick="location.href='logout.php'">登出</button></li>
 		<?php } else{?>
