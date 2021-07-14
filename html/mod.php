@@ -37,7 +37,7 @@ if ($post) {
 }
 else{
 	$senderUnit = "收發室";
-	$good = get_goods($_GET['id'],'','')[0];
+	$good = get_good_by_id($_GET['id']);
 	
 	$id 				= $_GET['id'];
 	$cdate   			= $good['cdate'];

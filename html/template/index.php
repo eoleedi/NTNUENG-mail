@@ -72,18 +72,20 @@
 			</div>
 			<br>
 			<div class="d-flex justify-content-center">
-				<a class="page-nav" href= <?php echo ("./?dataStart=" . ($dataStart > 0 ? ($dataStart - 10) : 0) ."&query=".$query );?> >上一頁</a>&nbsp
-				<a class="page-nav" href= <?php echo ("./?dataStart=" .($dataStart + 10)."&query=".$query );?> >下一頁</a>
-			</div>
-			<div class="d-flex justify-content-center">
-				<a class="page-nav" href= <?php echo ("./?dataStart=0&query=".$query );?> >回首頁</a>&nbsp
+				<?php for( $i=1 ; $i<=$pages ; $i++ ) {
+					if ( $page-3 < $i && $i < $page+3 ) {
+				?>
+				<a class="page-nav" href= <?php if($query){ echo ("?page=".$i."&query=".$query);}else{echo ("?page=".$i); }?>> <?php echo $i."&nbsp" ?> </a>
+				
+				<?php }} ?>
+				<a class="page-nav" href= <?php echo "?page=".$pages; ?>> 末頁</a>
 			</div>
 			<?php } else{ ?>
 			<div class="d-flex justify-content-center">
-				<text>已經沒有資料了喔</text>
+				<text>沒有資料喔</text>
 			</div>
 			<div class="d-flex justify-content-center">
-				<a href="./" > (回第一頁) </a>
+				<a href="./" > (回首頁) </a>
 			</div>
 			<?php } ?>
 		</div>

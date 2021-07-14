@@ -26,43 +26,69 @@ function add_good($cdate, $senderUnit, $receiver, $receiveDate, $receiveTime, $s
 
 	return $stmt->execute();
 }
+function get_good_by_id($id)
+{
+	$dbh = new PDO('mysql:host=mysql;dbname=' . DB_NAME, DB_USER, DB_PASS);
+	
+	$sql = "SELECT * FROM goods WHERE id = :id";
+	$stmt = $dbh->prepare($sql);
+	$stmt->execute(['id' => $id]);
+	return $stmt->fetchAll(PDO::FETCH_ASSOC)[0];
 
-function get_goods($id, $query, $dataStart)
+}
+function get_goods($query, $page, $per)
 {
 	/* SQL note
 		offset n row 			跳過n行
 		fetch next n rows only  取得n行 
 	*/ // wait for update 分頁功能
-	
-	$dataStart = (int)$dataStart;
 
 	$dbh = new PDO('mysql:host=mysql;dbname=' . DB_NAME, DB_USER, DB_PASS);
-	
-	if ($id)
-		$sql = "SELECT * FROM goods  WHERE id = :id";
-	else if ($query){
+
+	$page = (int)$page;
+	$start = ($page-1)*(int)$per;
+
+	if($query){
+		$query = '%'.$query.'%';
+		$sql = "SELECT COUNT(*) FROM goods WHERE receiver LIKE :query OR senderUnit LIKE :query OR signer LIKE :query OR mailNumber LIKE :query";
+	}
+	else{
+		$sql = "SELECT COUNT(*) FROM goods";
+	}
+	$stmt = $dbh->prepare($sql);
+
+	if($query){
+		$stmt->bindValue(':query', $query, PDO::PARAM_STR);
+	}
+
+	$stmt->execute();
+	$data_nums = $stmt->fetchColumn();
+
+	$stmt->closeCursor();
+
+
+
+	if ($query){
 		$query = '%'.$query.'%';
 		$sql = "SELECT * FROM goods WHERE receiver LIKE :query OR senderUnit LIKE :query OR signer LIKE :query OR mailNumber LIKE :query ORDER BY receiveDateTime DESC LIMIT :dataStart,10";
 	}
 	else
 		$sql = "SELECT * FROM goods ORDER BY receiveDateTime DESC LIMIT :dataStart, 10";
 
-	$stmt = $dbh->prepare($sql);
 	
-	if ($id)
-		$stmt->execute(['id' => $id]);
-	else if ($query){
-		$stmt->bindValue(':dataStart', $dataStart, PDO::PARAM_INT);
+	$stmt = $dbh->prepare($sql);
+
+	if ($query){
+		$stmt->bindValue(':dataStart', $start, PDO::PARAM_INT);
 		$stmt->bindValue(':query', $query, PDO::PARAM_STR);
 		$stmt->execute();
 	}
 	else{
-		$stmt->bindValue(':dataStart', $dataStart, PDO::PARAM_INT);
+		$stmt->bindValue(':dataStart', $start, PDO::PARAM_INT);
 		$stmt->execute();
 	}
-
 	
-	return $stmt->fetchAll(PDO::FETCH_ASSOC);
+	return array($stmt->fetchAll(PDO::FETCH_ASSOC), $data_nums);
 }
 
 function mod_good($cdate, $senderUnit, $receiver, $receiveDate, $receiveTime, $signer, $mailType, $mailNumber, $placementDate, $placementTime, $placementLocation, $id)

@@ -8,17 +8,18 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] === false  ){
 }
 
 $query = isset($_GET['query']) ? $_GET['query'] : false;
-$dataStart = isset($_GET['dataStart']) ? intval($_GET['dataStart']) : 0;
+$page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 $id = isset($_GET['id']) ? $_GET['id'] : false;
-
+$per = 10;
 //print_r($query);
 $error = false;
 
-if ($query) {
-$goods = get_goods($id, $query, $dataStart);
-}   
-else{
-    $goods = get_goods($id, $query, $dataStart);
-}
+
+$result = get_goods($query, $page, $per);
+$goods = $result[0];
+$data_nums = $result[1];
+
+$pages = ceil($data_nums/$per);
+
 include('template/index.php');
 ?>
