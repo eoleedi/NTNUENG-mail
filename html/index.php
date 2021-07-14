@@ -11,7 +11,7 @@ $query = isset($_GET['query']) ? $_GET['query'] : false;
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 $id = isset($_GET['id']) ? $_GET['id'] : false;
 $per = 10;
-//print_r($query);
+
 $error = false;
 
 $result = get_goods($query, $page, $per);
