@@ -1,9 +1,9 @@
 <?php
-include('lib/function.php');
+include 'lib/function.php';
 
 session_start();
 
-if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] === false  ){
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] === false) {
     header("Location:login.php");
 }
 
@@ -14,12 +14,10 @@ $per = 10;
 //print_r($query);
 $error = false;
 
-
 $result = get_goods($query, $page, $per);
 $goods = $result[0];
 $data_nums = $result[1];
 
-$pages = ceil($data_nums/$per);
+$pages = ceil($data_nums / $per);
 
-include('template/index.php');
-?>
+include 'template/index.php';

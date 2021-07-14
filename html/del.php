@@ -1,19 +1,17 @@
 <?php
-include('lib/function.php');
+include 'lib/function.php';
 
 session_start();
-if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] === false  ){
-	header("Location:login.php");
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] === false) {
+    header("Location:login.php");
 }
 
-
-$id   = isset($_REQUEST['id']) ? $_REQUEST['id'] : '';
+$id = isset($_REQUEST['id']) ? $_REQUEST['id'] : '';
 $error = false;
 
 if (del_good($id)) {
-	header('Location: index.php');
-	exit;
+    header('Location: index.php');
+    exit;
 } else {
-	$error = 'Input failed';
+    $error = 'Input failed';
 }
-?>
