@@ -9,7 +9,6 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] === false) {
 
 $query = isset($_GET['query']) ? $_GET['query'] : false;
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
-$id = isset($_GET['id']) ? $_GET['id'] : false;
 $per = 10;
 
 $error = false;
