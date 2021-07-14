@@ -72,12 +72,23 @@
 			</div>
 			<br>
 			<div class="d-flex justify-content-center">
-				<?php for( $i=1 ; $i<=$pages ; $i++ ) {
+				<?php 
+				for( $i=1 ; $i<=$pages ; $i++ ) {
 					if ( $page-3 < $i && $i < $page+3 ) {
+						if($i != $page){
+							if($query){
+								echo "<a class=\"page-nav\" href=?page=".$i."&query=".$query.">".$i."</a>&nbsp";
+							}
+							else{
+								echo "<a class=\"page-nav\" href=?page=".$i.">".$i."</a>&nbsp";
+							}
+						}
+						else{
+							echo $i."&nbsp";
+						}
+					}
+				}
 				?>
-				<a class="page-nav" href= <?php if($query){ echo ("?page=".$i."&query=".$query);}else{echo ("?page=".$i); }?>> <?php echo $i."&nbsp" ?> </a>
-				
-				<?php }} ?>
 				<a class="page-nav" href= <?php echo "?page=".$pages; ?>> 末頁</a>
 			</div>
 			<?php } else{ ?>
