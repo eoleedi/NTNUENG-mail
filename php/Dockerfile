@@ -1,4 +1,4 @@
-FROM php:7-apache
+FROM php:8.0.12-fpm-bullseye
 
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 
