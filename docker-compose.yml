@@ -1,5 +1,9 @@
 version: '3'
 
+networks:
+  backend:
+    driver: bridge
+
 services:
     phpapache:
       build: ./php
@@ -17,11 +21,13 @@ services:
         MYSQL_USER: ${MYSQL_USER}
         MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       restart: always
+      networks:
+        - backend
         
     mysql:
       image: mariadb
-      ports:
-        - "3306:3306"
+      expose:
+        - 3306
       restart: always
       volumes:
         - mysql_data:/var/lib/mysql
@@ -32,5 +38,7 @@ services:
         MYSQL_USER: ${MYSQL_USER}
         MYSQL_PASSWORD: ${MYSQL_PASSWORD}
         TZ: Asia/Taipei
+      networks:
+        - backend
 volumes: 
   mysql_data:
