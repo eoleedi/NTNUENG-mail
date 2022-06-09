@@ -1,0 +1,6 @@
+services:
+    phpapache:
+      ports:
+        - "8080:80"
+      volumes:
+        - ./php/default-dev.conf:/etc/apache2/sites-available/000-default.conf
