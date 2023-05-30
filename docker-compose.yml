@@ -53,5 +53,6 @@ services:
         WATCHTOWER_LABEL_ENABLE: "true"
         WATCHTOWER_CLEANUP: "true"
         WATCHTOWER_SCHEDULE: ${WATCHTOWER_SCHEDULE}
+        TZ: Asia/Taipei
 volumes: 
   mysql_data:
