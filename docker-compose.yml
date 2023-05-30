@@ -23,6 +23,8 @@ services:
       restart: always
       networks:
         - backend
+      labels:
+        - "com.centurylinklabs.watchtower.enable=true"
         
     mysql:
       image: mariadb:10.8.5
@@ -40,5 +42,14 @@ services:
         TZ: Asia/Taipei
       networks:
         - backend
+      labels:
+        - "com.centurylinklabs.watchtower.enable=true"
+
+    watchtower:
+      image: containrrr/watchtower
+      volumes:
+        - /var/run/docker.sock:/var/run/docker.sock
+      environment:
+        WATCHTOWER_LABEL_ENABLE: "true"
 volumes: 
   mysql_data:
