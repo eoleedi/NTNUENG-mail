@@ -51,5 +51,7 @@ services:
         - /var/run/docker.sock:/var/run/docker.sock
       environment:
         WATCHTOWER_LABEL_ENABLE: "true"
+        WATCHTOWER_CLEANUP: "true"
+        WATCHTOWER_SCHEDULE: ${WATCHTOWER_SCHEDULE}
 volumes: 
   mysql_data:
