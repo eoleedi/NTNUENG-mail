@@ -5,40 +5,40 @@ networks:
     driver: bridge
 
 services:
-    phpapache:
-      build: ./php
-      ports:
-        - "80:80"
-        - "443:443"
-      depends_on:
-        - mysql
-      volumes:
-        - ./html:/var/www/html
-        - /etc/letsencrypt:/etc/letsencrypt
-        - ./php/default.conf:/etc/apache2/sites-available/000-default.conf
-      environment:
-        MYSQL_DATABASE: ${MYSQL_DATABASE}
-        MYSQL_USER: ${MYSQL_USER}
-        MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-      restart: always
-      networks:
-        - backend
-        
-    mysql:
-      image: mariadb:10.8.5
-      expose:
-        - 3306
-      restart: always
-      volumes:
-        - mysql_data:/var/lib/mysql
-        - ./mysql/sql/init.sql:/docker-entrypoint-initdb.d/init.sql
-      environment:
-        MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-        MYSQL_DATABASE: ${MYSQL_DATABASE}
-        MYSQL_USER: ${MYSQL_USER}
-        MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-        TZ: Asia/Taipei
-      networks:
-        - backend
-volumes: 
+  phpapache:
+    build: ./php
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - mysql
+    volumes:
+      - ./html:/var/www/html
+      - /etc/letsencrypt:/etc/letsencrypt
+      - ./php/default.conf:/etc/apache2/sites-available/000-default.conf
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    restart: always
+    networks:
+      - backend
+
+  mysql:
+    image: mariadb:10.8.5
+    expose:
+      - 3306
+    restart: always
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./mysql/sql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      TZ: Asia/Taipei
+    networks:
+      - backend
+volumes:
   mysql_data:
